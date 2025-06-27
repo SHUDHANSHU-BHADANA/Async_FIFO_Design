@@ -40,4 +40,5 @@ This project implements an **asynchronous FIFO** that allows safe data transfer 
 ![Screenshot 2025-06-27 230433](https://github.com/user-attachments/assets/3df45475-3f4c-4287-ad93-246e03713d86)
 
 
-
+📚 License
+This project is open-source and free to use for academic and commercial purposes under the MIT License.
