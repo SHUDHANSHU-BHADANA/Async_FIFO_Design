@@ -1,5 +1,5 @@
 module twoflopsync #(parameter addr_width=4) (input clk,rstn,input [addr_width:0] ptr,output reg [addr_width:0] q2);
-  reg [add_size:0] q1;
+  reg [add_width:0] q1;
 
   always@(posedge clk or negedge rstn) begin
     
