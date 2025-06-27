@@ -4,6 +4,7 @@ module tb;
 
   parameter DATAWIDTH = 8;
   parameter ADDR_WIDTH = 3;
+  localparam DEPTH = 1 << ADDR_WIDTH;
 
   reg                   wclk = 0, rclk = 0;
   reg                   wrst_n = 0, rrst_n = 0;
@@ -11,7 +12,6 @@ module tb;
   reg  [DATAWIDTH-1:0]  wdata;
   wire [DATAWIDTH-1:0]  rdata;
   wire                  wfull, rempty;
-  wire [ADDR_WIDTH:0]   wptr, rptr;
 
   // Instantiate the FIFO
   top #(
@@ -27,14 +27,12 @@ module tb;
     .rrst_n(rrst_n),
     .rdata(rdata),
     .wfull(wfull),
-    .rempty(rempty),
-    .wptr(wptr),
-    .rptr(rptr)
+    .rempty(rempty)
   );
 
-  // Clock generation
-  always #5 wclk = ~wclk;
-  always #6.5 rclk = ~rclk;
+  // Clock generators
+  always #5 wclk = ~wclk;     // 10 ns period
+  always #6.5 rclk = ~rclk;   // 13 ns period
 
   integer i;
 
@@ -42,38 +40,47 @@ module tb;
     $dumpfile("fifo_dump.vcd");
     $dumpvars(0, tb);
 
-    $monitor("Time=%0t | wdata=%0d | rdata=%0d | wptr=%b | rptr=%b | winc=%b | rinc=%b | wfull=%b | rempty=%b",
-             $time, wdata, rdata, wptr, rptr, winc, rinc, wfull, rempty);
-
     // Reset
     wrst_n = 0; rrst_n = 0;
-    winc = 0; rinc = 0;
+    winc = 0;  rinc = 0;
     wdata = 0;
-
-    #20;
+    #30;
     wrst_n = 1; rrst_n = 1;
+    #20;
 
-    // Write to FIFO
-    for (i = 0; i < 5; i = i + 1) begin
+    // --------------------------
+    // Step 1: Write until full
+    // --------------------------
+    $display("Writing until FIFO is full...");
+    for (i = 0; i < DEPTH + 2; i = i + 1) begin
       @(posedge wclk);
       if (!wfull) begin
-        wdata <= i + 1;
+        wdata <= i;
         winc <= 1;
-        @(posedge wclk);
+        $display("Time %0t ns: Writing %0d (wfull=%0b)", $time, i, wfull);
+      end else begin
+        $display("Time %0t ns: Cannot write, FIFO FULL!", $time);
         winc <= 0;
       end
+      @(posedge wclk);
+      winc <= 0;
     end
 
+    // --------------------------
+    // Step 2: Read until empty
+    // --------------------------
     #50;
-
-    // Read from FIFO
-    for (i = 0; i < 5; i = i + 1) begin
+    $display("\nReading until FIFO is empty...");
+    for (i = 0; i < DEPTH + 2; i = i + 1) begin
       @(posedge rclk);
       if (!rempty) begin
         rinc <= 1;
         @(posedge rclk);
+        $display("Time %0t ns: Read data = %0d (rempty=%0b)", $time, rdata, rempty);
         rinc <= 0;
-        $display("Read at %0t: %0d", $time, rdata);
+      end else begin
+        $display("Time %0t ns: Cannot read, FIFO EMPTY!", $time);
+        rinc <= 0;
       end
     end
 
@@ -82,4 +89,3 @@ module tb;
   end
 
 endmodule
-
