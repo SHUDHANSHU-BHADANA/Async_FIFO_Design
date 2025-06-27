@@ -14,7 +14,7 @@ module wptr_and_full #(parameter addr_width = 3)
   wire [addr_width:0] wptr_next = wptr + 1;
 
   // FIFO is full when wptr_next == synchronized read pointer
-  assign wfull = (wq2_ptr=={~wptr_next[addr_width],wptr_next[addr_width-1:0]);
+  assign wfull = (wq2_ptr=={~wptr_next[addr_width],wptr_next[addr_width-1:0]});
 
   always @(posedge wclk or negedge wrst_n) begin
     if (!wrst_n) begin
