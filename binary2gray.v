@@ -1,4 +1,4 @@
-module binary2gray #(parameter addr_width=4)(
+module binary2gray #(parameter addr_width=3)(
     input  [addr_width:0] data,
     output reg [addr_width:0] gray
 );
