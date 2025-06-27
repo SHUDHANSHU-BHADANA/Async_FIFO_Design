@@ -1,5 +1,5 @@
 module fifodesign #(parameter datawidth=8,addr_width=3)
-  (input [datawidth-1:0] wdata,input,winc,wclk,rinc,rclk,wrst_n,rrst_n,
+  (input [datawidth-1:0] wdata,input winc,wclk,rinc,rclk,wrst_n,rrst_n,
    output [datawidth-1:0] rdata,output wfull,rempty);
 
   wire [addr_width:0] wptr,rptr,wq2_rptr,rq2_wptr,b2gr,b2gw,g2br,g2bw;
