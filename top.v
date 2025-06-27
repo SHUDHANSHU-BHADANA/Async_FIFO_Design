@@ -1,4 +1,4 @@
-module fifodesign #(parameter datawidth = 8, addr_width = 3)
+module top #(parameter datawidth = 8, addr_width = 3)
 (
   input  [datawidth-1:0] wdata,
   input  winc, wclk,
