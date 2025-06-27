@@ -7,4 +7,5 @@ module fifodesign #(parameter datawidth=8,addr_width=3)
 
   assign wclken=winc&(!wfull);
 
+  twoflopsync #(.addr_width(addr_width))(.clk(wclk),.rstn(wrst_n)
   
