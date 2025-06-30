@@ -44,12 +44,12 @@ module top #(parameter datawidth = 8, addr_width = 3)
     .gray(g2br), .binary(wq2_rptr)
   );
 
-  // Read and Write pointer logic
+  // Read and empty logic
   rptr_and_empty #(.addr_width(addr_width)) s7 (
     .rinc(rinc), .rclk(rclk), .rrst_n(rrst_n),
     .rq2_wptr(rq2_wptr), .rptr(rptr), .raddr(raddr), .rempty(rempty)
   );
-
+  //write and full logic
   wptr_and_full #(.addr_width(addr_width)) s8 (
     .winc(winc), .wclk(wclk), .wrst_n(wrst_n),
     .wq2_rptr(wq2_rptr), .wptr(wptr), .waddr(waddr), .wfull(wfull)
