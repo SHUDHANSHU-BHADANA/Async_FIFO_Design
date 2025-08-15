@@ -35,9 +35,10 @@ This project implements an **asynchronous FIFO** that allows safe data transfer 
 - `addr_width`: Width of FIFO address pointer (default: 3 bits = 8-depth FIFO)
 
 ## 🧪 Simulation
-![Screenshot 2025-06-28 000443](https://github.com/user-attachments/assets/e43171d7-a549-4525-99ab-7934b4df9fde)
-![Screenshot 2025-06-28 000152](https://github.com/user-attachments/assets/1e3a89a6-8545-4806-8dfd-593f9daef7f2)
-![Screenshot 2025-06-27 230433](https://github.com/user-attachments/assets/3df45475-3f4c-4287-ad93-246e03713d86)
+<img width="1496" height="307" alt="image" src="https://github.com/user-attachments/assets/e46bf303-689e-480b-bfd7-8ab084bd92eb" />
+<img width="1479" height="633" alt="image" src="https://github.com/user-attachments/assets/56018b8a-6b3a-4b8e-abd8-e09da9666eb1" />
+
+
 
 
 📚 License
