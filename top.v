@@ -58,7 +58,7 @@ module top #(parameter datawidth = 8, addr_width = 3)
   // FIFO memory
   fifomem #(.addr_width(addr_width), .datawidth(datawidth)) s9 (
     .wdata(wdata), .wclken(wclken), .wclk(wclk),
-    .waddr(waddr), .raddr(raddr), .rdata(rdata)
+    .waddr(waddr), .raddr(raddr), .rdata(rdata), .rempty(rempty)
   );
 
 endmodule
