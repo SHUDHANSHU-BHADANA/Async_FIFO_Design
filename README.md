@@ -34,8 +34,14 @@ This project implements an **asynchronous FIFO** that allows safe data transfer 
 - `datawidth`: Width of each data word (default: 8 bits)
 - `addr_width`: Width of FIFO address pointer (default: 3 bits = 8-depth FIFO)
 
-## 🧪 Simulation
+- 
+## Block diagram
+<img width="1280" height="805" alt="image" src="https://github.com/user-attachments/assets/7954ba26-adc0-4fe9-aadb-ce299fbfacf4" />
+
+## Schematic
 <img width="1496" height="307" alt="image" src="https://github.com/user-attachments/assets/e46bf303-689e-480b-bfd7-8ab084bd92eb" />
+
+## Simulation
 <img width="1479" height="633" alt="image" src="https://github.com/user-attachments/assets/56018b8a-6b3a-4b8e-abd8-e09da9666eb1" />
 
 
