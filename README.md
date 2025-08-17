@@ -38,6 +38,10 @@ This project implements an **asynchronous FIFO** that allows safe data transfer 
 ## Block diagram
 <img width="1280" height="805" alt="image" src="https://github.com/user-attachments/assets/7954ba26-adc0-4fe9-aadb-ce299fbfacf4" />
 
+## Results
+<img width="986" height="650" alt="image" src="https://github.com/user-attachments/assets/bdfdfcc4-adce-4c8f-8332-0d67328c6b2b" />
+
+
 ## Schematic
 <img width="1496" height="307" alt="image" src="https://github.com/user-attachments/assets/e46bf303-689e-480b-bfd7-8ab084bd92eb" />
 
