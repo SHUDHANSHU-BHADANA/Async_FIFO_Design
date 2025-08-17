@@ -59,7 +59,7 @@ module tb;
         winc <= 1;
         $display("Time %0t ns: Writing %0d (wfull=%0b)", $time, i, wfull);
       end else begin
-        $display("Time %0t ns: Cannot write, FIFO FULL!", $time);
+        $display("Time %0t ns: Cannot write, FIFO FULL! (wfull=%d)", $time,wfull);
         winc <= 0;
       end
       @(posedge wclk);
@@ -79,7 +79,7 @@ module tb;
         $display("Time %0t ns: Read data = %0d (rempty=%0b)", $time, rdata, rempty);
         rinc <= 0;
       end else begin
-        $display("Time %0t ns: Cannot read, FIFO EMPTY!", $time);
+        $display("Time %0t ns: Cannot read, FIFO EMPTY!(rempty=%d)", $time,rempty);
         rinc <= 0;
       end
     end
